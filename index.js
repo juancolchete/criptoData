@@ -5,9 +5,13 @@ const https = require('https');
 require('dotenv').config();
 const app = express();
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 app.use(express.json({ extended: false}));
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
   const httpsAgent = new https.Agent({ rejectUnauthorized: false });
   axios.defaults.httpsAgent = httpsAgent;
   const headers = {
