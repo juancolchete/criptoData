@@ -9,7 +9,7 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get('/crypto', (req, res) => {
+router.get('/', (req, res) => {
   const httpsAgent = new https.Agent({ rejectUnauthorized: false });
   axios.defaults.httpsAgent = httpsAgent;
   const headers = {
